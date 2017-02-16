@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Socket.io Example</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-offset-3">
+                    <h1>Users <button class="btn btn-primary" id="add-new-user">Add User</button></h1>
+
+                    <ul id="users-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js"></script>
+
+        <script type="text/javascript">
+            (function ($) {
+                var socket = io.connect('http://localhost:3000');
+
+                socket.on('user-added', function (user) {
+                    appendUser(user);
+                });
+
+                $('#add-new-user').click(function (e) {
+                    e.preventDefault();
+
+                    var user = {name: 'Sohel Amin'};
+                    appendUser(user);
+
+                    socket.emit('user-added', user);
+                });
+
+                function appendUser(user) {
+                    $('ul#users-list').append('<li>' + user.name + '</li>');
+                }
+            })(jQuery);
+        </script>
+    </body>
+</html>

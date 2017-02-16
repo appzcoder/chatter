@@ -1,0 +1,16 @@
+{
+    "name": "socket.io-example",
+    "private": true,
+    "version": "1.0.0",
+    "description": "A socket.io example app",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Sohel Amin",
+    "license": "MIT",
+    "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.2"
+    }
+}
