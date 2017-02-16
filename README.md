@@ -18,7 +18,7 @@ Socket.io Example
     ```bash
     node index.js
     ```
-4. Open the `http://localhost:3000` in multiple browsers or clients for see the result
+4. Open the url `http://localhost:3000` in multiple browsers or clients for seeing the result
 
 ## Author
 
