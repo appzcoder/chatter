@@ -2,9 +2,14 @@
 <html >
     <head>
         <meta charset="UTF-8">
-        <title>Direct Messaging / Chating App</title>
+        <title>Chatter - Direct Messaging / Chating App</title>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
+        <style type="text/css">
+            [v-cloak] {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -13,16 +18,16 @@
                     <div class="top">
                         <input type="text" />
                     </div>
-                    <ul class="people">
+                    <ul class="people" v-cloak>
                         <li v-bind:class="'person' + (toUserID == user.id ? ' active' : '')" v-bind:data-chat="user.name" v-for="user in onlineUsers" @click="toUserID = user.id">
-                            <img src="http://s3.postimg.org/yf86x7z1r/img1.jpg" alt="" />
+                            <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png" alt="" />
                             <span class="name">{{ user.name }}</span>
                             <span class="time">{{ '4:00 PM' }}</span>
                             <span class="preview">{{ '...' }}</span>
                         </li>
                     </ul>
                 </div>
-                <div class="right" v-if="toUserID">
+                <div class="right" v-if="toUserID" v-cloak>
                     <div class="top"><span>To: <span class="name">{{ toUser.name }}</span></span></div>
                     <div v-bind:class="'chat' + (toUserID == user.id ? ' active-chat' : '')" v-bind:data-chat="user.id" v-for="user in onlineUsers">
                         <div v-bind:class="'bubble ' + (msg.from == currentUser.id ? 'me' : 'you')" v-for="msg in myMessages">
@@ -71,8 +76,8 @@
 
                     this.socket.on('chat message', function(msg, from) {
                         var id = self.messages.length + 1;
-                        console.log(id);
                         self.messages.push({ id: id, from: from, to: self.currentUser.id, text: msg });
+                        //@Todo - Store the messages somewhere
                     });
                     /* Socket End Here */
                 },
@@ -107,6 +112,7 @@
                     sendMessage: function () {
                         var id = this.messages.length + 1;
                         this.messages.push({ id: id, from: this.currentUser.id, to: this.toUserID, text: this.message });
+                        //@Todo - Store the messages somewhere
 
                         this.socket.emit('chat message', this.message, this.toUserID, this.currentUser.id);
                         this.message = '';

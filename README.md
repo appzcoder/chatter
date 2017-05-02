@@ -1,5 +1,5 @@
-# Socket.io
-Socket.io Example
+# Chatter
+A chatting application using socket.io, node.js, express.js & vue.js
 
 ### Requirements
     Express >= 4.0

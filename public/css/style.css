@@ -12,9 +12,10 @@ body {
   text-rendering: optimizeLegibility;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  background-image: url("http://s17.postimg.org/fr01hfe33/image.jpg");
+  background-color: rgba(71, 75, 199, 0.84);
+/*  background-image: url("https://www.bing.com/az/hprichbg/rb/LacetsMontvernier_ROW9287513938_1920x1080.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: none;*/
 }
 
 .wrapper {
