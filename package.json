@@ -1,6 +1,6 @@
 {
-    "name": "appzcoder/chatter",
-    "version": "1.0.0",
+    "name": "chatter",
+    "private": true,
     "description": "A chatting app using socket.io",
     "author": "Sohel Amin",
     "license": "MIT",
